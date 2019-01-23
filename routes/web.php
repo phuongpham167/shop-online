@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('index',[
+	'as' => 'trangchu',
+	'uses' => 'PageController@getIndex'
+]);
+
+Route::get('chitiet', [
+	'as' => 'chitiet_sanpham',
+	'uses' => 'PageController@getChitiet'
+]);
