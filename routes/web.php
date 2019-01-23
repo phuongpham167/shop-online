@@ -48,3 +48,27 @@ Route::get('/test2/{test}', function($test){
 
 	return View::make('simple', $data);
 });
+
+Route::get('custom/response', function () {
+   	$response = Response::make('Hello world!', 200);
+   	$response->headers->set('our key', 'our value');
+	return $response;
+});
+
+//JSON response
+Route::get('markdown/response', function(){
+	$data = ['a', 'b', 'c'];
+	return Response::json($data);
+});
+
+//Download response
+Route::get('file/download', function(){
+	$filename = 'abc.pdf';
+	return Response::download($filename);
+});
+
+
+
+
+
+
