@@ -30,7 +30,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="source/index.html"><img src="source/images/home/logo.png" alt="" /></a>
+						<a href="{{route('index')}}"><img src="source/images/home/logo.png" alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 						<div class="btn-group">
@@ -62,8 +62,14 @@
 							<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 							<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-							<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-							<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+							@if(Auth::check())
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href=""><i class="fa fa-people"></i>Hi {{Auth::user()->name}}</a></li>
+								<li><a href="{{route('logout')}}"><i class="fa fa-lock"></i>Logout</a></li>
+							@else
+								<li><a href="{{route('dangnhap')}}"><i class="fa fa-lock"></i>Login</a></li>
+								<li><a href="{{route('dangki')}}"><i class="fa fa-lock"></i>Signup</a></li>
+							@endif
 						</ul>
 					</div>
 				</div>

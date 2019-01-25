@@ -14,8 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('index',[
-	'as' => 'trangchu',
+	'as' => 'index',
 	'uses' => 'PageController@getIndex'
 ]);
 
@@ -23,3 +24,26 @@ Route::get('chitiet', [
 	'as' => 'chitiet_sanpham',
 	'uses' => 'PageController@getChitiet'
 ]);
+
+Route::get('dangnhap', [
+	// 'as' => 'dangnhap',
+	'uses' => 'PageController@getLogin'
+])->name('dangnhap');
+
+Route::post('dangnhap', [
+	'uses' => 'PageController@postLogin'
+])->name('login');
+
+Route::get('dangki', [
+	'as' => 'dangki',
+	'uses' => 'PageController@getSignup'
+]);
+
+Route::post('dangki', [
+	'as' => 'signup',
+	'uses' => 'PageController@postSignup'
+]);
+
+Route::get('dangxuat', [
+	'uses' => 'PageController@getLogout'
+])->name('logout');
