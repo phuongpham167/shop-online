@@ -52,8 +52,17 @@ class PageController extends Controller
     	$user->email = $req->email;
     	$user->name = $req->name;
     	$user->password = Hash::make($req->password);
-    	$user->save();
-    	return redirect()->back()->with('thanhcong', 'Da tao tai khoan thanh cong');
+    	if($user->save()){
+            $credentials = array('email' => $req->email, 'password' => $req->password);
+            if(Auth::attempt($credentials)){
+                return redirect()->route('index')->with(['flag' => 'success', 'message' => 'Dang nhap thanh cong']);
+            }
+            else{
+                return redirect()->back()->with(['flag' => 'danger', 'message' => 'Dang nhap khong thanh cong']);
+            }
+        }
+    	
+        // return redirect()->back()->with('thanhcong', 'Da tao tai khoan thanh cong');
     }
 
     public function postLogin(Request $req){
