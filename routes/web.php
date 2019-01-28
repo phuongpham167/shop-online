@@ -96,9 +96,10 @@ Route::get('/nom-nom', function(){
 });
 
 
-
-
-
+//get current url
+Route::get('/current/url', function(){
+	return URL::current();
+});
 
 
 
