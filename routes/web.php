@@ -47,3 +47,8 @@ Route::post('dangki', [
 Route::get('dangxuat', [
 	'uses' => 'PageController@getLogout'
 ])->name('logout');
+
+Route::get('cart', 'ProdutcsController@cart')->name('cart');
+Route::get('add-to-cart/{id}', 'ProdutcsController@addToCart')->name('addToCart');
+Route::patch('update-cart', 'ProdutcsController@update');
+Route::patch('remove-from-cart', 'ProdutcsController@remove');
