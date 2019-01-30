@@ -52,3 +52,8 @@ Route::get('cart', 'ProdutcsController@cart')->name('cart');
 Route::get('add-to-cart/{id}', 'ProdutcsController@addToCart')->name('addToCart');
 Route::patch('update-cart', 'ProdutcsController@update');
 Route::patch('remove-from-cart', 'ProdutcsController@remove');
+
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('change-language/{language}', 'PageController@changeLanguage')
+        ->name('user.change-language');
+});

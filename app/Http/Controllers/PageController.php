@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Hash;
 use Auth;
+use Session;
 
 class PageController extends Controller
 {
@@ -93,17 +94,11 @@ class PageController extends Controller
         return redirect()->route('login');
     }
 
+    public function changeLanguage($language)
+    {
+        Session::put('locale', $language);
 
-
-
-
-
-
-
-
-
-
-
-
+        return redirect()->back();
+    }
 
 }
