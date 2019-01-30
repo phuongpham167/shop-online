@@ -42,6 +42,8 @@
 								<li><a href="#">Canada</a></li>
 								<li><a href="#">UK</a></li>
 							</ul>
+							<a href="{!! route('user.change-language', ['en']) !!}">English</a>
+							<a href="{!! route('user.change-language', ['vi']) !!}">Vietnam</a>
 						</div>
 						
 						<div class="btn-group">
@@ -59,7 +61,7 @@
 				<div class="col-sm-8">
 					<div class="shop-menu pull-right">
 						<ul class="nav navbar-nav">
-							<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
+							<li><a href="#"><i class="fa fa-user"></i>{{ trans('message.welcome') }}</a></li>
 							<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 							<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
 							@if(Auth::check())
