@@ -1,3 +1,4 @@
+
 <?php
 
 /*
@@ -101,11 +102,53 @@ Route::get('/current/url', function(){
 	return URL::current();
 });
 
+ //validation
+Route::post('/register', function($request req){
+	$formData = $request->all();
+
+	$rules = [
+		'username' => ['alpha_num', 'min:3']
+	];
+
+	//you can custom validation messenges
+	//build the custom mesages array
+	$messages = [
+		'min' => "This feild aint long enough"
+	];
+
+	//create a new validation instance
+	$validator = Validator::make($formData, $rules, $messages);
+
+	//$validator tra ve gia tri boolean duoc xac dinh
+	//passes() or fails()
+	if ($validator->passes()){
+
+	}
+
+	//lay ra error
+	$error = $validator->message();
+
+	return redirect('/')->withErrors($validator);
 
 
+	//some validate rules
+	
+	//accepted:
+	//['feild'] => 'accepted' //dam bao rang 1 chap nhan tich cuc dc dc ok
 
+	//active_url
+	//['feild'] => 'active_url' //make sure is a valid url
 
+	//after
+	//['feild'] => 'after:04/24/16' make sure the date after 04/24/16
+	//same same cai nay co before va between:5,7
 
+	//alpha
+	//['feild'] => 'alpha' //make sure that value is alphabeta character
+
+	
+
+});
 
 
 
