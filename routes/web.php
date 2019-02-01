@@ -52,3 +52,9 @@ Route::get('cart', 'ProdutcsController@cart')->name('cart');
 Route::get('add-to-cart/{id}', 'ProdutcsController@addToCart')->name('addToCart');
 Route::patch('update-cart', 'ProdutcsController@update');
 Route::patch('remove-from-cart', 'ProdutcsController@remove');
+
+Route::get('lang/{lang}','LangController@lang')->name('lang');
+//Route::get('lang/{lang}', function($lang){
+//    App::setLocale($lang);
+//    redirect(route('index'));
+//})->name('lang');
